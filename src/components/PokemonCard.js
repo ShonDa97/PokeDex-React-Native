@@ -7,15 +7,15 @@ import {
 } from "react-native";
 import React from "react";
 import getColorByPokemonType from "../utils/getColorByPokemonType";
+import { useNavigation } from "@react-navigation/native";
 
 export default function PokemonCard({ pokemon }) {
 
   const pokemonColor = getColorByPokemonType(pokemon.type);
-  console.log(pokemonColor);
   const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles };
 
   const goToPokemonInfo = () => {
-    console.log("poke:" + pokemon.name);
+    console.log("poke:" + pokemon.name); 
   };
   return (
     <TouchableWithoutFeedback onPress={goToPokemonInfo}>
