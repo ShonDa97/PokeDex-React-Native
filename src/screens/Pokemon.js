@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getPokemonByIdApi } from "../api/pokemon";
 import { ScrollView } from "react-native-gesture-handler";
 import Head from "../components/pokemon/Head";
+import Type from "../components/pokemon/Type";
 
 export default function Pokemon(props) {
   const {
@@ -31,6 +32,7 @@ export default function Pokemon(props) {
         image={pokemon.sprites.other["official-artwork"].front_default}
         type={pokemon.types[0].type.name}
       />
+      <Type types={pokemon.types}/>
     </ScrollView>
   );
 }
