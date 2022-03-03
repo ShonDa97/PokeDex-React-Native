@@ -2,6 +2,7 @@ import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import { getPokemonByIdApi } from "../api/pokemon";
 import { ScrollView } from "react-native-gesture-handler";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import Head from "../components/pokemon/Head";
 import Type from "../components/pokemon/Type";
 import Stats from "../components/pokemon/Stats";
@@ -23,6 +24,21 @@ export default function Pokemon(props) {
       }
     })();
   }, [params]);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRigth: () => null,
+      headerLeft: () => (
+        <Icon
+          name="arrow-left"
+          color="#fff"
+          size={20}
+          style={{ marginLeft: 20 }}
+          onPress={navigation.goBack}
+        />
+      ),
+    });
+  }, [navigation, params]);
 
   if (!pokemon) return null;
   return (
